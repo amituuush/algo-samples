@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <script>
+
+        // :Given an array of integers, determine if the numbers within the array are in sequential multiple order of the first value within the array:
+
+        // eg: [2,4,6,8] Result: True
+        // eg: [2,4,8,16] Result: false
+        // eg: [8,10,12,14] Result: False
+        // eg: [8,10,12,14,18] Result: False
+        // eg: [5,10,12,14,18] Result: False
+        // eg: [5,10,15,20,25] Result: True
+
+        // [2, 1, 4, null, null, 9, 30, null]
+        // [i,j,...]
+        // [,i,j,...]
+        // [,i,,,j]
+        // [,,,,,i,j]
+        // i will update itself to be the current j
+        // j will increment
+        // if j is null, keep on incrementing
+
+// pseudocode
+// create var firstVal equal to arr[0]
+// #1 i and j start at index [0] and [1]
+// #2 check if i is a number
+    // true: check if j is a number
+        // true: check if difference between j and i is equal to firstVal
+            // true: increment i and j by one and start again at #2
+            // false: return false
+        // false: increment j by one and start again at #2
+    // false: set i equal to j and increment j by one, start again at #2
+// after end of loop, return true
+
+
+        function isSequential2(arr) {
+            var firstVal = arr[0];
+            var i = 0;
+            var j = 1;
+            while (i < arr.length - 1) {
+                if (typeof arr[i] === 'number') {
+                    if (typeof arr[j] === 'number') {
+                        if (arr[j] - arr[i] === firstVal) {
+                            i++;
+                            j++;
+                            continue;
+                        } else {
+                            return false;
+                        }
+                    } else {
+                        j++;
+                        continue;
+                    }
+                } else {
+                    i = j;
+                    j++;
+                    continue;
+                }
+            }
+            return true;
+        }
+
+        // how would the solution look if it were sequentially multiplying instead of adding?
+        // if (arr[i] * firstVal === arr[i + 1])
+            
+
+        var test1 = [2,4, null, null,6,8];
+        var test2 = [2,4,8,16];
+        var test3 = [8,10,12,14] ;
+        var test4 = [8,10,12,14,18];
+        var test5 = [5,10,12,14,18];
+        var test6 = [5,10,15,20,25];
+        var test7 = [1, 2, 3];
+        var test8 = [-6, -12];
+
+        console.log(isSequential2(test1));
+        console.log(isSequential2(test2));
+        console.log(isSequential2(test3));
+        console.log(isSequential2(test4));
+        console.log(isSequential2(test5));
+        console.log(isSequential2(test6));
+        console.log(isSequential2(test7));
+        console.log(isSequential2(test8));
+
+
+
+        </script>
+    </body>
+</html>
