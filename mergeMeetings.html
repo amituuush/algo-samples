@@ -34,19 +34,17 @@
 
     function mergeRanges(arr) {
 
-
     var i = 0;
     var j = 1;
-    console.log(arr[j]['startTime']);
-    while (i < arr.length) {
+    while (j < arr.length) {
       if (arr[i]['endTime'] >= arr[j]['startTime'] && arr[j]['endTime'] >= arr[i]['startTime']) {
 
         arr[i]['startTime'] = Math.min(arr[i]['startTime'], arr[j]['startTime']);
-        arr[i]['endTime'] = Math.min(arr[i]['endTime'], arr[j]['endTime']);
-        arr.splice(i + 1, 1);
+        arr[i]['endTime'] = Math.max(arr[i]['endTime'], arr[j]['endTime']);
+        arr.splice(j, 1);
         i = 0;
         j = 1;
-      } else if (arr[i]['startTime'] > arr[j]['endTime']) {
+      } else if (arr[i]['startTime'] > arr[j]['endTime'] || arr[j]['startTime'] > arr[i]['endTime']) {
         var arrFirst = arr[i];
         arr[i] = arr[j];
         arr[i] = arrFirst;
@@ -57,12 +55,14 @@
         j++;
       }
     }
+
+    return arr;
   }
 
   console.log(mergeRanges([
     {startTime: 0,  endTime: 1},
     {startTime: 3,  endTime: 5},
-    {startTime: 3,  endTime: 6},
+    {startTime: 4,  endTime: 8},
     {startTime: 10, endTime: 12},
     {startTime: 9,  endTime: 10}
   ]));
