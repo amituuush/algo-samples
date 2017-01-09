@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+
+    // var myRectangle = {
+    //
+    //   // coordinates of bottom-left corner
+    //   leftX: 1,
+    //   bottomY: 5,
+    //
+    //   // width and height
+    //   width: 10,
+    //   height: 4,
+    //
+    // };
+
+    function calculateLove(rect1, rect2) {
+
+      var loveAnswer = [ [0, 0], [0, 0], [0, 0], [0, 0] ];
+      // calculate 4 points of each rectangle
+      var rectangle1 = [
+                         [ rect1.leftX, rect1.bottomY ],
+                         [ rect1.leftX + rect1.width, rect1.bottomY ],
+                         [ rect1.leftX + rect1.width, rect1.bottomY + rect1.height ],
+                         [ rect1.leftX, rect1.bottomY + rect1.height ]
+                       ];
+
+      var rectangle2 = [
+                         [ rect2.leftX, rect2.bottomY ],
+                         [ rect2.leftX + rect2.width, rect2.bottomY ],
+                         [ rect2.leftX + rect2.width, rect2.bottomY + rect2.height ],
+                         [ rect2.leftX, rect2.bottomY + rect2.height ]
+                       ];
+
+      // calculate x overlap
+      var rect1XRange = [ rectangle1[0][0], rectangle1[1][0] ];
+      var rect2XRange = [ rectangle2[0][0], rectangle2[1][0] ];
+
+      var rectsXMax = Math.max(rect1XRange[0], rect2XRange[0]);
+      var rectsXMin = Math.min(rect1XRange[1], rect2XRange[1]);
+      if (rectsXMin - rectsXMax > 0) {
+
+        // assign to loveArray
+        loveAnswer[0][0] = rectsXMax;
+        loveAnswer[3][0] = rectsXMax;
+        loveAnswer[1][0] = rectsXMin;
+        loveAnswer[2][0] = rectsXMin;
+
+        // calculate y overlap
+        var rect1YRange = [ rectangle1[0][1], rectangle1[2][1] ];
+        var rect2YRange = [ rectangle2[0][1], rectangle2[2][1] ];
+
+        var rectsYMax = Math.max(rect1YRange[0], rect2YRange[0]);
+        var rectsYMin = Math.min(rect1YRange[1], rect2YRange[1]);
+
+        if (rectsYMin - rectsYMax > 0) {
+
+          // assign to loveArray
+          loveAnswer[0][1] = rectsYMax;
+          loveAnswer[1][1] = rectsYMax;
+          loveAnswer[2][1] = rectsYMin;
+          loveAnswer[3][1] = rectsYMin;
+
+        } else {
+          return -1;
+        }
+
+      } else {
+        return -1;
+      }
+
+      return loveAnswer;
+
+
+
+    }
+
+    var rect1 = {
+      leftX: 1,
+      bottomY: 5,
+      width: 10,
+      height: 4,
+    };
+
+    var rect2 = {
+      leftX: 6,
+      bottomY: 2,
+      width: 7,
+      height: 5,
+    };
+
+  console.log(calculateLove(rect1, rect2));
+
+
+
+    </script>
+  </body>
+</html>
