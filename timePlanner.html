@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+    // Implement a meeting planner that can schedule meetings between two persons at a time.
+    //
+    // Time is represented by Unix format (also called Epoch) - a positive integer holding the seconds since January 1st, 1970 at midnight.
+    //
+    // Planner input:
+    //
+    // dur - Meeting duration in seconds (a positive integer).
+    // timesA, timesB - Availability of each person, represented by an array of arrays.
+    // Each sub-array is a time span holding the start (first element) and end (second element) times.
+    // You may assume that time spans are disjointed.
+    // Planner output:
+    //
+    // Array of two items - start and end times of the planned meeting, representing the earliest opportunity for the two persons to meet for a dur length meeting.
+    // If no possible meeting can be scheduled, return an empty array instead.
+    // Design and implement an efficient solution and analyze its runtime and space complexity.
+
+  // [5, 10], [15, 18], [22, 30]
+  // [7, 12], [14, 16]
+
+  // A =======
+  // B     ======
+
+  // A      =======
+  // B =======
+
+  // endTime of A is greater than startTime of B
+  // && endTime of B is greater than startTime of A
+
+
+  // A ==============
+  // B    ======
+
+  // startTime of A is less than or equal to startTime of B
+  // && endTime of A is greater than or equal to endTime B
+  // || reversed
+
+  function timePlanner(dur, timesA, timesB) {
+
+
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+  </body>
+</html>
