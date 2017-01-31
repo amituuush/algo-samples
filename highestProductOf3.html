@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Highest Product of 3</title>
+  </head>
+
+  <body>
+    <script>
+      
+
+// store top 3 integers in an array and store the first 3 integers in the array to begin. sort them
+// loop through array (start at [3]) and check if current integer is greater than any of the highest3
+  // if yes: drop the lowest one and add the current integer. Sort array again
+// also check to see if current integer is a negative value. If it is, store it in a new array called highestNegs
+
+// after loop, check to see if length of highestNegs is greater than 1.
+  // if not, return highest3 as answer
+  // if yes, need to compare the highest 2 numbers in highestNegs with the lowest 2 numbers in highest 3. Which ever has a higher product, use that as part of the highest 3. The highest value in highest3 will remain regardless
+
+  function highestProductOf3(arr) {
+    var highestNegs = [];
+    var highest3 = [];
+    arr.sort(function(a, b) { return b - a; });
+    highest3[0] = arr[0];
+    highest3[1] = arr[1];
+    highest3[2] = arr[2];
+    console.log(arr);
+    for (var i = 3; i < arr.length; i++) {
+      if (arr[i] < 0) {
+        highestNegs.push(arr[i]);
+      } else if (arr[i] > highest3[0] || arr[i] > highest3[1] || arr[i] > highest3[2]) {
+        highest3[2] = arr[i];
+        highest3.sort(function(a, b) { return b - a; });
+      }
+    }
+
+    console.log('highest3', highest3);
+    console.log('highestNegs', highestNegs);
+
+    if (highestNegs.length < 2) {
+      return highest3;
+    } else {
+      // check highestNegs[1] and [2] and compare with:
+      // highest3[0] and [1]
+      var highest2NegsProduct = highestNegs[highestNegs.length - 2] * highestNegs[highestNegs.length - 1];
+      // console.log(highest2NegsProduct);
+      var lowest2OfHighest3Product = highest3[1] * highest3[2];
+      
+      if (lowest2OfHighest3Product > highest2NegsProduct) {
+        return highest3;
+      } else {
+        highest3[1] = highestNegs[highestNegs.length - 1];
+        highest3[2] = highestNegs[highestNegs.length - 2];
+        return highest3;
+      }
+    }
+
+  }
+
+  console.log(highestProductOf3([1, -5, 2, -7, -5, -9, -10, -4, 2]));
+
+    </script>
+  </body>
+</html>
