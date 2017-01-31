@@ -18,6 +18,9 @@
   // if yes, need to compare the highest 2 numbers in highestNegs with the lowest 2 numbers in highest 3. Which ever has a higher product, use that as part of the highest 3. The highest value in highest3 will remain regardless
 
   function highestProductOf3(arr) {
+    if (arr.length < 3) {
+        throw new Error('Less than 3 items!');
+    }
     var highestNegs = [];
     var highest3 = [];
     arr.sort(function(a, b) { return b - a; });
