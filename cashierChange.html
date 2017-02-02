@@ -1,21 +1,33 @@
 <!DOCTYPE html>
 <html>  
-  <head>
-    <title>Cashier Change</title>
-  </head>
-  <body>
-    <script>
-      
+<head>
+  <title>Cashier Change</title>
+</head>
+<body>
+  <script>
+// computes the number of ways to make amount of money with coins of the available denominations.
+
+// Example: for amount=4 (4¢) and denominations=[1,2,3] (1¢, 2¢ and 3¢), your program would output 4—the number of ways to make 4¢ with those denominations:
+// input: 4, [1, 2, 3]
+// output:
+  // 1¢, 1¢, 1¢, 1¢
+  // 1¢, 1¢, 2¢
+  // 1¢, 3¢
+  // 2¢, 2¢
+
+  // 1. divide amount by each denomination to see if integer or fraction
+  // 2. if integer: mark down that many times of the denomination
+  // 3. AND subtract one off and see if adding other denomiations reaches amount
+  // 4. THEN subtract 2 off and see if adding other denominations reaches amount
+  // 5. repeat until only 1 of denomiation left
+  // if fraction: go to step 3
+
+  function denominations(money, coinArr) {
 
 
 
+  }
 
-
-
-
-
-
-
-    </script>
-  </body>
+  </script>
+</body>
 </html>
