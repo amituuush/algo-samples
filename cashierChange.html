@@ -17,14 +17,34 @@
 
   // 1. divide amount by each denomination to see if integer or fraction
   // 2. if integer: mark down that many times of the denomination
-  // 3. AND subtract one off and see if adding other denomiations reaches amount
+  // 3. AND subtract one off and see if adding other denominations reaches amount
   // 4. THEN subtract 2 off and see if adding other denominations reaches amount
   // 5. repeat until only 1 of denomiation left
   // if fraction: go to step 3
 
   function denominations(money, coinArr) {
+    var output = [];
 
+    function intOrFloatFunc(num) {
+      if (num % 1 === 0) {
+        return 'int';
+      } else (num % 1 !== 0) {
+        return 'float';
+      }
+    }
 
+    for (var i = 0; i < coinArr.length; i++) {
+      var moneyDiv = money / coinArr[i];
+      var intOrFloat = intOrFloatFunc(moneyDiv);
+      if (intOrFloat === 'int') {
+        var partOutput = [];
+        for (var j = 1; j < moneyDiv; j++) {
+          partOutput.push(coinArr[i]);
+        }
+        output.push(partOutput);
+      }
+
+    }
 
   }
 

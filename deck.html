@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+
+// In a casino, all the playing cards got mixed up, and some of them got lost. You have to collect as many full decks as possible.
+
+// You get N mixed up French playing cards as your input.
+//
+// The cards are of the following ranks:
+// 2, 3, 4, 5, 6, 7, 8, 9, T, J, Q, K, A
+//
+// The four suits are:
+// Spade(♠), Club(♣), Heart(♥), and Diamond(♦)
+//
+// The cards are given using their rank followed by their suit:
+//
+// 2 of Spades: 2S
+// Ace of Clubs: AC
+// 10 of Hearts: TH
+// Write a function that will accept an array of cards and return the number of full decks contained in the array.
+//
+// Example: ["9C", "KS", "AC", "AH", "8D", "4C", "KD", "JC", "7D", "9D", "2H", "7C", "3C", "7S", "5C", "6H", "TH"] -> 0
+
+function isFullDeck(arr) {
+  // create object, loop through numbers and create properties on each object for each number, and for each property create 4 suits
+  // loop through array add 1 to each property
+  // check object to see how many decks are there
+
+  var deckObj = {
+    A: {},
+    2: {},
+    3: {},
+    4: {},
+    5: {},
+    6: {},
+    7: {},
+    8: {},
+    9: {},
+    T: {},
+    J: {},
+    Q: {},
+    K: {},
+
+  };
+  for (var i = 1; i < 15; i++) {
+    if (i === 10) {
+      deckObj.T.S = 0;
+      deckObj.T.C = 0;
+      deckObj.T.H = 0;
+      deckObj.T.D = 0;
+    } else if (i === 11) {
+      deckObj.J.S = 0;
+      deckObj.J.C = 0;
+      deckObj.J.H = 0;
+      deckObj.J.D = 0;
+    } else if (i === 12) {
+      deckObj.Q.S = 0;
+      deckObj.Q.C = 0;
+      deckObj.Q.H = 0;
+      deckObj.Q.D = 0;
+    } else if (i === 13) {
+      deckObj.K.S = 0;
+      deckObj.K.C = 0;
+      deckObj.K.H = 0;
+      deckObj.K.D = 0;
+    } else if (i === 1) {
+      deckObj.A.S = 0;
+      deckObj.A.C = 0;
+      deckObj.A.H = 0;
+      deckObj.A.D = 0;
+    } else {
+      deckObj.i.S = 0;
+      deckObj.i.C = 0;
+      deckObj.i.H = 0;
+      deckObj.i.D = 0;
+    }
+  }
+
+  for (var i = 0; i < arr.length; i++) {
+    var num = arr[i].charAt(0);
+    var suit = arr[i].charAt(1);
+    deckObj[num][suit]++;
+  }
+
+  var numCards = {};
+
+  for (var prop in deckObj) {
+    if (deckObj.prop.S > 0) {
+      for (var i = 1; i < deckObj.prop.S + 1; i++) {
+        numCards.i = 1;
+      }
+    }
+    if (deckObj.prop.C > 0) {
+      for (var i = 1; i < deckObj.prop.C + 1; i++) {
+        numCards.i = 1;
+      }
+    }
+    if (deckObj.prop.H > 0) {
+      for (var i = 1; i < deckObj.prop.H + 1; i++) {
+        numCards.i = 1;
+      }
+    }
+    if (deckObj.prop.D > 0) {
+      for (var i = 1; i < deckObj.prop.D + 1; i++) {
+        numCards.i = 1;
+      }
+    }
+  }
+
+  var numDecks = 0;
+  for (var prop in numCards) {
+    if (numCards.prop === 52) {
+      numDecks++;
+    }
+  }
+
+  return numDecks;
+
+}
+
+
+console.log(isFullDeck(["9C", "KS", "AC", "AH", "8D", "4C", "KD", "JC", "7D", "9D", "2H", "7C", "3C", "7S", "5C", "6H", "TH"]));
+
+
+
+    </script>
+  </body>
+</html>

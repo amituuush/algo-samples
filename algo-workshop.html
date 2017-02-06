@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+
+
+// Q: Given an array of numbers, find the lowest number in the array and then swap it with the second lowest number within the array
+// function: lowSwap(int[]);
+// Input: [8] [9] [7] [6] [11] [2] [8] Output: [8] [9] [7] [2] [11] [6] [8]
+
+
+ // create a lowNum variable and set it to undefined.
+ // create lowNumIndex variable and set it to undefined.
+ // create a secondLowNum variable set it to undefined.
+ // create secondLowNumIndex variable set it to undefined.
+ // create a difference variable that is the difference between current value and lowNum, if difference is positive, store difference and store value as lowest, if it's positive, ignore it
+
+ // loop through array, on first loop, set lowNum equal to array index
+ // on following loops, check if current value in loop is less than lowNum, store its index in lowNumIndex and set lowNum equal to current value
+
+ // loop through array,
+
+  // function lowSwap(arr) {
+  //   var lowNum = arr[0];
+  //   var lowNumIndex = 0;
+  //   var secondLowNum = undefined;
+  //   var secondLowNumIndex = undefined;
+  //   var delta = Infinity;
+  //
+  //
+  //   for (var i = 0; i < arr.length; i++) {
+  //     if (arr[i] < lowNum) {
+  //       lowNum = arr[i];
+  //       lowNumIndex = i;
+  //     }
+  //   }
+  //
+  //   for (var i = 0; i < arr.length; i++) {
+  //     if (arr[i] - lowNum < delta && arr[i] - lowNum !== 0) {
+  //       delta = arr[i] - lowNum;
+  //       secondLowNum = arr[i];
+  //       secondLowNumIndex = i;
+  //     }
+  //   }
+  //   // console.log('lowest number', lowNum);
+  //   // console.log('second lowest number', secondLowNum);
+  //   arr[lowNumIndex] = secondLowNum;
+  //   arr[secondLowNumIndex] = lowNum;
+  //   console.log(arr);
+  // }
+  //
+  // lowSwap([8, 9, 7, 6, 11, 2, 8]);
+//
+//   function lowSwap(arr){
+//     //lowest set of number with index
+//     var index_00;
+//     var num_00;
+//
+//     //second lowest set of number with index
+//     var index_01;
+//     var num_01;
+//
+//     //setting the starter variables
+//     num_00 = arr[0] // equals the first value in the array
+//     index_00 = 0; // starts at 0
+//
+//     for(var i = 1; i<arr.length; i++){
+//
+//         if(arr[i] < num_00){
+//             index_01 = index_00;
+//             index_00 = i;
+//             num_01 = num_00;
+//             num_00 = arr[i];
+//         }
+//     }
+//
+//     var temp = arr[index_00];
+//     arr[index_00] = arr[index_01];
+//     arr[index_01] = temp;
+//
+//     console.log("The lowest number is: " + num_00);
+//     console.log("The second lowest number is: " + num_01);
+//
+//     console.log("The Final Array after the swap is: ");
+//     console.log(arr);
+// }
+//
+// lowSwap([1, 1, 1, 1, 3]);
+
+
+// Q: Given an array of numbers, find the biggest number in the array and then swap it with the second biggest number within the array
+// function: bigSwap(int[]);
+// Input: [8] [9] [7] [6] [11] [2] [8] Output: [8] [9] [7] [2] [11] [6] [8]
+
+//
+// function maxProfit(arr) {
+//   var lowNum = arr[0];
+//   var highNum = arr[1];
+//   var i = 0;
+//   var j = 1;
+//   var delta = 0;
+//
+//   while (j < arr.length) {
+//     if (arr[j] < arr[i]) {
+//       lowNum = arr[j];
+//       highNum = arr[j + 1];
+//       i++;
+//       j++;
+//     } else if (arr[j] > arr[i]) {
+//       if (arr[j] - arr[i] > delta) {
+//         delta = arr[j] - arr[i];
+//         highNum = arr[j];
+//       }
+//       j++;
+//     }
+//   }
+//   console.log('lowest num', lowNum);
+//   console.log('highest num', highNum);
+//   console.log('max profit', delta);
+// }
+//
+// maxProfit([10, 7, 5, 8, 11, 9]);
+
+//
+// function getProductsOfAllIntsExceptAtIndex(arr) {
+//   var newArr = [];
+//
+//   for (var i = 0; i < arr.length; i++) {
+//     var product = 1;
+//     for (var j = 0; j < arr.length; j++) {
+//       if (j !== i) {
+//         product *= arr[j];
+//       }
+//     }
+//     newArr.push(product);
+//   }
+//   console.log(newArr);
+// }
+//
+//
+// getProductsOfAllIntsExceptAtIndex([1, 7, 3, 4]);
+
+// [3, 1, 2, 5, 6, 4]
+//
+// function getProductsOfAllIntsExceptAtIndex(arr) {
+//
+//   var productsOfAllIntsBeforeIndex = [];
+//
+//   // for each integer, find the product of all the integers
+//   // before it, storing the total product so far each time
+//   var productSoFar = 1;
+//   for (var i = 0; i < arr.length; i++) {
+//       productsOfAllIntsBeforeIndex[i] = productSoFar;
+//       productSoFar *= arr[i];
+//   }
+//
+//   var productAfter = 1;
+//   for (var i = arr.length - 1; i > -1; i--) {
+//     productsOfAllIntsBeforeIndex[i] *= productAfter;
+//     productAfter *= arr[i];
+//   }
+//   console.log(productsOfAllIntsBeforeIndex);
+//
+// }
+//
+// getProductsOfAllIntsExceptAtIndex([1, 2, 6, 5, 0]);
+// // [540, 270, 90, 108, 60]
+
+function highestProduct(arr) {
+  var num1 = arr[0];
+  var num2 = arr[1];
+  var num3 = arr[2];
+  var negNum1 = 0;
+  var negNum2 = 0;
+
+  for (var i = 3; i < arr.length; i++) {
+
+    if (arr[i] < 0) {
+      if (arr[i] < negNum1) {
+        negNum1 = arr[i];
+      }
+    }
+
+    if (arr[i] >= 0){
+      if (arr[i] > num1) {
+        num1 = arr[i];
+      } else if (arr[i] > num2) {
+        num2 = arr[i];
+      } else if (arr[i] > num3) {
+        num3 = arr[i];
+      }
+    }
+
+
+  }
+  console.log(num1);
+  console.log(num2);
+  console.log(num3);
+  console.log(num1 * num2 * num3);
+}
+
+highestProduct([9, 3, 6, 9, -5, 6, 1]);
+
+
+
+    </script>
+  </body>
+</html>

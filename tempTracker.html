@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>  
+  <head>
+    <title>Temp Tracker</title>
+  </head>
+  <body>
+    <script>
+      
+    class TempTracker {
+      constructor() {
+        this.temps = [];
+        this.maxTemp = -Infinity;
+        this.minTemp = Infinity;
+        this.tempsSum;
+        this.modeTracker = {};
+        this.mode = 0;
+      }
+
+      insert(newTemp) {
+        this.temps.push(newTemp);
+
+        // min and max
+        if (newTemp > this.maxTemps) {
+          this.maxTemp = newTemp;
+        }
+        if (newTemp < this.minTemp) {
+          this.minTemp = newTemp;
+        }
+
+        // mean
+        if (this.tempsSum === undefined) {
+          this.tempsSum = newTemp;
+        } else {
+          this.tempsSum += newTemp;
+        }
+
+        // mode
+        if (this.modeTracker.newTemp === undefined) {
+          this.modeTracker.newTemp = 1;
+        } else (this.modeTracker.newTemp) {
+          this.modeTracker.newTemp++;
+        }
+
+        let temporaryMode = 0;
+        for (var temp in modeTracker) {
+          if (modeTracker.temp > temporaryMode) {
+            temporaryMode = modeTracker.temp;
+          }
+        }
+        this.mode = temporaryMode;
+
+      }
+
+      getMax() {
+        return this.maxTemp;
+      }
+
+      getMin() {
+        return this.minTemp;
+      }
+
+      getMean() {
+        return this.tempsSum / this.temps.length;
+      }
+
+      getMode() {
+        return this.mode;
+      }
+
+    }
+
+    </script>
+  </body>
+</html>
