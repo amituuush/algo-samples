@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>  
+<head>
+  <title>Find Duplicates</title>
+</head>
+<body>
+  <script>
+// @Q: Find if there are duplicate integer values. Return false if no duplicate or return the value that is duplicate along with ALL indices e.g.: 
+// [4] [3] [8] [-19] [7] [6] ==> false
+// [4] [3] [8] [-19] [7] [3] ==> 3 … 1,5
+// [3] [3] [8] [-19] [7] [3] ==> 3 … 0,1,5
+
+// iterate over array
+// store each value as a new property on an object
+// if freq exists, increment by one
+// if it doesn't exist, create a new freq prop and set it equal to 1
+// var dupObject = {
+//    "4": {
+//      freq: 1,
+//      index: [1]
+//    },
+//    "3": {
+//      freq: 2,
+//      index: [0, 1, 5]
+//    }
+
+// create dupArr array
+// loop over dupObject with a for in loop
+// if freq > 1  =>  create array with first value as interger (prop)
+// and second value as the indices and push to dupArr
+// var dupArr = [[3, [1, 5]]]
+//}
+
+function findDuplicates(arr) {
+  let dupObject = {};
+  let dupArr = [];
+
+  for (var i = 0; i < arr.length; i++) {
+    if (dupObject[arr[i]]) {
+      dupObject[arr[i]].freq += 1;
+      dupObject[arr[i]].indices.push(i);
+    } else if (dupObject[arr[i]] === undefined) {
+      dupObject[arr[i]] = {};
+      dupObject[arr[i]].indices = [];
+      dupObject[arr[i]].freq = 1;
+      dupObject[arr[i]].indices.push(i);
+    }
+  }
+
+  console.log(dupObject);
+
+  for (prop in dupObject) {
+    console.log('test');
+    if (dupObject.prop.freq > 1) {
+      const intArr = [dupObject.prop, dupObject.prop.indices];
+      dupArr.push(intArr);
+    }
+  }
+  console.log(dupArr);
+  if (dupArr.length) {
+    return dupArr;
+  } else { 
+    return false; 
+  }
+}
+
+console.log(findDuplicates([2, 3, 5, 1, 7, 6, 2, 2]));
+  </script>
+</body>
+</html>
