@@ -4,67 +4,69 @@
   <title>Find Duplicates</title>
 </head>
 <body>
-  <script>
-// @Q: Find if there are duplicate integer values. Return false if no duplicate or return the value that is duplicate along with ALL indices e.g.: 
-// [4] [3] [8] [-19] [7] [6] ==> false
-// [4] [3] [8] [-19] [7] [3] ==> 3 … 1,5
-// [3] [3] [8] [-19] [7] [3] ==> 3 … 0,1,5
+// [1, 5, 7, 3, 8, 2]
+// [5, 4, 6, 3, 2, 1]
 
-// iterate over array
-// store each value as a new property on an object
-// if freq exists, increment by one
-// if it doesn't exist, create a new freq prop and set it equal to 1
-// var dupObject = {
-//    "4": {
-//      freq: 1,
-//      index: [1]
-//    },
-//    "3": {
-//      freq: 2,
-//      index: [0, 1, 5]
-//    }
+[1,2,3,5,4]
+[2,2,3,4,5]   first 5 second 4 --> 5   seocnd go to the next element to compare that element in first the array 
 
-// create dupArr array
-// loop over dupObject with a for in loop
-// if freq > 1  =>  create array with first value as interger (prop)
-// and second value as the indices and push to dupArr
-// var dupArr = [[3, [1, 5]]]
-//}
+function (arr1, arr2){
+var duplicates = [];
+var i = 0
+var j = 0
 
-function findDuplicates(arr) {
-  let dupObject = {};
-  let dupArr = [];
+while(i<arr1.length && j<arr2.length){
+   if (arr1[i] === arr2[j]) {
+      duplicates.push(arr1[i]);
+      i++;
+      j++;
+   } else if (arr1[i] > arr2[j]){
+      j++;
+   } else {
+      i++;
+   }
+   
+   return duplicates;
+   
+}
+}
+O(n+m) this efficient 
+O(nm) this is inefficient 
 
-  for (var i = 0; i < arr.length; i++) {
-    if (dupObject[arr[i]]) {
-      dupObject[arr[i]].freq += 1;
-      dupObject[arr[i]].indices.push(i);
-    } else if (dupObject[arr[i]] === undefined) {
-      dupObject[arr[i]] = {};
-      dupObject[arr[i]].indices = [];
-      dupObject[arr[i]].freq = 1;
-      dupObject[arr[i]].indices.push(i);
-    }
-  }
+// sort both arrays
+// use a for loop, for 2 cases:
+// if lengths of both arrays are the same:
+// 
 
-  console.log(dupObject);
+arr1.length > arr2.length 
 
-  for (prop in dupObject) {
-    console.log('test');
-    if (dupObject.prop.freq > 1) {
-      const intArr = [dupObject.prop, dupObject.prop.indices];
-      dupArr.push(intArr);
-    }
-  }
-  console.log(dupArr);
-  if (dupArr.length) {
-    return dupArr;
-  } else { 
-    return false; 
-  }
+function findDuplicates2(Arr1, Arr2){  arr1.length > arr2.length
+   var duplicates = []
+   for number in Arr1:
+      if (binarySearch(Arr2, number)) != -1:
+         duplicates.append(number);
+   return duplicates
 }
 
-console.log(findDuplicates([2, 3, 5, 1, 7, 6, 2, 2]));
+function binarySearch(arr, num ){
+    begin = 0
+    end = length(arr) - 1
+    while (begin <= end):
+       mid = round((begin+end)/2)
+       //index 2 === 5 
+       if arr[mid] < num:
+          begin = mid + 1
+       else if arr[mid] == num:
+          return mid
+       else:
+          end = mid - 1
+    return -1
+}
+
+
+
+//
+    
   </script>
 </body>
 </html>
