@@ -10,11 +10,36 @@
 // [4] [3] [8] [-19] [7] [3] ==> 3 … 1,5
 // [3] [3] [8] [-19] [7] [3] ==> 3 … 0,1,5
 
-// iterate over array
-function findDuplicates(arr) 
+function findDuplicates(arr) {
+  var count = [];
+  for (var i = 0; i < arr.length; i++) {
+    if (count[arr[i]] === undefined) {
+      count[arr[i]] = [arr[i], i];
+    } else {
+      count[arr[i]].push(i);
+    }
+  }
+  return count;
+
+}
 
 
-console.log(findDuplicates([2, 3, 5, 1, 7, 6, 2, 2]));
+// determine if there are duplicates in the array. If there are, return true, if not return false
+// create array, loop through input array and set the index of new array that's equal to the number in the input array equal to 1 if it's undefined, if it's true (1), return true. return false outside the loop 
+// function findDuplicates(arr) {
+//   var count = [];
+//   for (var i = 0; i < arr.length; i++) {
+//     if (count[arr[i]] === undefined) {
+//       count[arr[i]] = 1;
+//     } else {
+//       return true;
+//     }
+//   }
+//   return false;
+
+// }
+
+console.log(findDuplicates([2, 3, 5, 1, 7, 6, 3, 2, 2, 3, 2]));
   </script>
 </body>
 </html>
